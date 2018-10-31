@@ -1,0 +1,111 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+        pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Registration</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+
+<script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+        src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script>
+$(document).ready(function () {
+    $('.sele').click(function () {
+            $.ajax({
+            url : '/dept/', 
+            type : 'GET',
+            async: true,
+                   cache: false,
+            success : function(data) {
+           
+                    for(var i=0;i<data.length;i++){
+                            if($('#sel option[value="' + data[i].dept_id + '"]').length == 0){
+                                    $('#sel').append('<option value="' + data[i].dept_id + '">' + data[i].dept_name + '</option>');
+                                    }
+                            }
+                    },
+            error : function(request, textStatus, errorThrown) {
+                alert(errorThrown);
+            }
+        });
+    });
+});
+</script>
+</head>
+<body>
+        <div class="col-md-6">
+                <form action="create" method="post" id="form1">
+                        <div class="form-group row">
+                                <label class="control-label col-sm-2" for="emp_id">EmployeeId:</label>
+                                <div class="col-sm-10">
+                                        <input type="text" class="form-control" formControlName="emp_id"
+                                                placeholder="id" name="emp_id" id="#">
+                                </div>
+                        </div>
+                        <div class="form-group row">
+                                <label class="control-label col-sm-2" for="name">Name:</label>
+                                <div class="col-sm-10">
+                                        <input type="text" class="form-control" formControlName="name"
+                                                placeholder="name" name="name" id="#">
+                                </div>
+                        </div>
+
+                        <div class="form-group row">
+                                <label class="control-label col-sm-2" for="salary">Salary Id</label>
+                                <div class="col-sm-10">
+                                        <input type="text" class="form-control" path="salary.sal_id"
+                                                formControlName="salary.sal_id" placeholder="sal_id"
+                                                name="salary[0].sal_id" id="#">
+                                </div>
+                        </div>
+
+                        <div class="form-group row">
+                                <label class="control-label col-sm-2" for="salary">Salary
+                                        Per Month:</label>
+                                <div class="col-sm-10">
+                                        <input type="text" value="" class="form-control"
+                                                formControlName="salary.salarypm" placeholder="salarypm"
+                                                name="salary[0].salarypm" id="#">
+                                </div>
+                        </div>
+                        <div class="form-group row">
+                                <label class="control-label col-sm-2" for="salary">Salary Month:</label>
+                                <div class="col-sm-10">
+                                        <input type="text" value="" class="form-control"
+                                                formControlName="salary.month" placeholder="Month"
+                                                name="salary[0].month" id="#">
+                                </div>
+                        </div>
+                        <div class="form-group row">
+                                <label class="control-label" for="dept">Department</label>
+                                <div class="col-sm-10">
+                                <select class="form-control sele" id = "sel" name="dept.dept_id">
+                                        <option value= "">Select</option>
+                                </select>
+                                </div>
+                        </div>
+                </form>
+                <button type="submit" form="form1" value="Submit">Submit</button>
+
+                <a href="/">List User</a>
+
+        </div>
+
+</body>
+</html>
+
+
+ success : function(data) {
+                    for(var i=0;i<data.length;i++){
+                            if($('.projectsel option[value="' + data[i].projectName + '"]').length == 0){
+                                    $('.projectsel').append('<option value="' + data[i].projectName + '">' + data[i].projectName + '</option>');
+                                    }
+                            }

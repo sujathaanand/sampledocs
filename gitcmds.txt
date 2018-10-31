@@ -1,0 +1,73 @@
+Git clone repository
+1.Create repository in git hub
+2.git clone <Repository path>
+3.Then paste all files what u want to push
+4.c:User\Sujatha\cd repositoryfolder >git add .
+5.git commit –m “comment”
+6.git push –u origin master 
+
+
+
+
+git clone http://172.16.0.134/root/ERP_Demo.git
+
+git checkout -b Develop
+
+git add .
+
+
+git branch 
+
+git commit -m "First branch"
+
+git push origin Develop
+
+
+git config --global user.name "sujathaM"
+
+git config --global user.email "sujatham@chn.srmtech.com"
+
+
+
+git config --global user.name "sujathaanand"
+
+git config --global user.email "sujathaanand456@gmail.com"
+
+git commit --amend
+
+git show
+
+git status 
+
+
+pull
+--------
+git remote add upsteam http://172.16.0.134/root/ERP_Demo.git
+
+git pull origin Develop
+
+
+git rm projectname -r -f
+
+
+
+
+git remote add origin  url 
+
+
+create a new branch
+-------------------------
+git checkout -b "j1-crudOperation"
+
+
+
+
+
+
+srmpc840/share/SampleBootWS
+
+
+
+
+
+

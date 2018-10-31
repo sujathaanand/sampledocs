@@ -1,0 +1,61 @@
+
+Select Query Function :
+
+CREATE OR REPLACE FUNCTION get_stuff(stateid INT)
+  RETURNS TABLE(st_id INT,st_name character varying) AS $$
+  BEGIN
+    RETURN QUERY
+    SELECT * from state
+      WHERE state_id=stateid;
+  END;
+$$ LANGUAGE plpgsql;   
+
+
+SELECT st_name from get_stuff(1);
+
+create or replace function fn_ins_app(applicantid bigint,username varchar,email varchar,phone bigint,city varchar,state varchar,password varchar)
+returns integer as
+$body$
+declare
+begin
+insert into applicant(applicantid,username,email,phone,city,state,password)
+values(applicantid,username,email,phone,city,state,password);
+return applicantid;
+end;
+$body$
+language plpgsql volatile;
+
+
+select from fn_ins_app(10,'sri','sri@sr.com',4566774,'atp','ap','sri');
+
+
+---------------------------------------------------------------------------
+
+CREATE OR REPLACE FUNCTION fn_app()
+RETURNS SETOF applicant AS
+$BODY$
+DECLARE 
+BEGIN
+RETURN QUERY
+SELECT * FROM APPLICANT;
+END;
+$BODY$
+LANGUAGE plpgsql VOLATILE;
+
+
+select * from fn_app();
+
+--------------------------------------------------------------------------
+
+create or replace function fn_del_app3(appid bigint)
+returns integer as
+$body$
+begin
+delete from applicant where applicantid=appid;
+return appid;
+end
+$body$
+language plpgsql volatile;
+
+select fn_del_app3(90);
+

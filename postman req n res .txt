@@ -1,0 +1,222 @@
+x-www-form-urlencoded
+   
+   USE POST MAN TO Check whether The REST Call Working 
+   
+http://localhost:8080/SpringRestHibernate/students    --get
+
+
+
+http://localhost:8080/SpringRestHibernate/create    --post Raw Json 
+
+{"id":6699,"name":"nithya","dob":"1998-10-10","degree":"BCom","department":"dfdf","grade":"G"}
+
+
+http://localhost:8080/SpringRestHibernate/create/delete/{id} -Delete 
+
+	http://localhost:8080/SpringRestHibernate/delete/1
+
+	http://localhost:8080/SpringRestHibernate/student/1
+
+http://localhost:8080/SpringRestHibernate/update  -put
+{"id":13,"name":"asdfm1","age":14,"dob":"14/10/96","degree":"Bsc","department":"karthikd@chn.srmtech.com","grade":"B"}
+
+
+http://localhost:8080/SpringRestHibernate/sendMail/7   -- get 
+
+
+http://localhost:8080/SpringRestHibernate/parentsmailids -get
+
+http://localhost:8080/SpringRestHibernate/sendMailtoParents -get
+
+aarthimp@chn.srmtech.com
+karthikd@chn.srmtech.com
+vigneshv@chn.srmtech.com
+krishnasamys@chn.srmtech.com
+
+
+
+http://localhost:8080/SpringRestHibernate/login
+
+{"username":"sam","password":"sam"}
+
+eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYW0iLCJleHAiOjE1MzE3MzY1Njl9.KKKyrYkXRo5aKZQfevs0igdfFvxDVMdhVG9FXwcnPPwIGyP2GNSLWQRfGXCtTjL0AKd2XOjmKOy3JqNK-SNMWA
+
+
+{"errorCode":"401","message":"Invalid Login Details"}
+
+
+{"id":"767","name":"sriganesh","dob":"1981/10/28","degree":"Bsc","department":"ff","grade":"s"}
+
+{"id":"7","name":"ri","age":10,"dob":"1981-09-09","degree":"Bsc","department":"ff","grade":"s","parentmail":"anu@gmail.com"}
+
+sujathaanand456@gmail.com
+
+
+
+https://stackblitz.com/angular/jdgqrdondle?file=src%2Fapp%2Fheroes%2Fheroes.service.ts
+
+http://localhost:8080/SpringRestHibernate/create 
+ {  "student_id":12222,
+	"first_name":"sanjai",
+   "last_name" :"deva",
+   "section" :"maths"
+   "university_id":"2"}
+   
+  
+http://localhost:8080/SpringRestHibernate/createUniversity
+
+{
+ "university_id":2,
+  "country":"india",
+  "name":"annamalai"
+}
+   
+  
+http://localhost:8080/SpringRestHibernate/updatesection/100
+   
+   <bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="packagesToScan" value="com.spring.ars"/>
+        <property name="hibernateProperties">
+		
+		
+		{
+  "studentid":77,
+  "firstname":"Vignesh",
+  "lastname":"mohan",
+      "subjects":[{
+               "subjectid":45,
+         "name":"mathematics"
+      },{
+              "subjectid":46,
+         "name":"angular"
+      },{
+              "subjectid":48,
+         "name":"tamil"
+      }
+          
+  ]
+}
+
+		
+		
+	{
+	"studentid":100,
+    "firstname":"Karthick",
+    "lastname":"G.P",
+    "subjects": [{
+    	"subjectid":1,
+        "name":"CS" },
+		{
+    	"subjectid":2,
+        "name":"EC"}]
+		
+    }
+			
+--------------------------------------------------------------------
+http://localhost:8080/Srm_Erp_Reg4-1.0/applicant/savecity
+
+{
+"city_id":101,
+"city_name":"chennai",
+"state":{
+"state_id":1
+}
+}
+
+B4 insertion 
+
+set default value for password-id as ex 400 -through Postgres Table-tr click properties -column change button 
+
+set default value for applicant id as ex 200 -through Postgres Table-tr click properties -column change button 
+
+
+insert into state(state_id,State_name) values (1,'TamilNadu');
+
+CREATE OR REPLACE FUNCTION public.fn_applcnt_reg(
+    applicant_name text,
+    email text,
+    phone_no bigint,
+    passwd text,
+    state_id integer,
+    city_id integer)
+  RETURNS integer AS
+$BODY$
+       /*
+       * Author : Ram
+       * Date   : July 24th 2018
+       * Version: 1.0
+       * Purpose: Sample code to validate Registration screen in PostgreSQL.
+       */
+       DECLARE
+     v_id integer;
+       p_id integer;
+       err_context text;
+    BEGIN
+    INSERT INTO public.applicant_registration
+       (applicant_name, email_id, mobile_number,  state_id, city_id)
+VALUES(applicant_name, email, phone_no,  state_id, city_id)
+RETURNING user_id INTO v_id;
+
+       INSERT INTO public.passwords
+(user_id, passwd, password_question, password_answer)
+VALUES(v_id, passwd, '', '')
+RETURNING password_id INTO p_id;
+              
+       return p_id;
+
+       exception 
+    when others then
+                  GET STACKED DIAGNOSTICS err_context = PG_EXCEPTION_CONTEXT;
+        RAISE INFO 'Error Name:%'  ,SQLERRM;
+        RAISE INFO 'Error State:%' ,SQLSTATE;
+                           RAISE INFO 'Error Context:%', err_context;
+        return -1; 
+  END;
+  $BODY$
+  LANGUAGE plpgsql VOLATILE
+  COST 100;
+ALTER FUNCTION public.fn_applcnt_reg(text, text, bigint, text, integer, integer)
+  OWNER TO postgres;
+
+  
+
+http://localhost:8080/Srm_Erp_Reg4-1.0/applicant/create
+{
+"applicant_name":"Karthick",
+"email_id": "Karthickg@gmail.com",
+"mobile_number":"9894085787",
+"city":{
+"city_name":"chennai"
+},
+"state":{
+"state_name":"TamilNadu"
+},
+"passwd":"welcome"
+}
+
+
+File Upload
+============
+
+http://localhost:8080/SpringRestAngular/file/uploadAction
+
+Choose Body -?Request can be passed through Key as Requestparam value mentioned in server as files  choose any file as value 
+
+http://localhost:8080/SpringRestAngular/file/pdf/{fileName:.+}
+
+cors blocked error Recovery 
+===============================
+https://stackoverflow.com/questions/35588699/response-to-preflight-request-doesnt-pass-access-control-check
+
+Email with form data:
+=======================
+http://localhost:8080/emailexample/mail/sendMailattach
+
+
+
+
+https://stackblitz.com/edit/angular-blob-file-download
+	
+
+
